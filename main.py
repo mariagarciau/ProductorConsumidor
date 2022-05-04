@@ -1,18 +1,12 @@
 from queue import Queue
 from threading import Thread
 import time
-import random
+from random import randint
 
 # Crear cola
-
-cacheList = []
-
-def isFull():
-    #Buffer está lleno
-    return len(cacheList) == 5
 q = Queue(10)
 
-def producer(name):
+def producer(name,lleno):
 
     """Productor"""
 
@@ -27,6 +21,8 @@ def producer(name):
         print(f"{name} está produciendo el bollo {count}")
 
         count+=1
+        if count > lleno:
+          break
 
 def customer(name):
 
@@ -49,8 +45,8 @@ def customer(name):
 
 
 if __name__ == '__main__':
-
-    t1 = Thread(target=producer,args=("Maestro Zhang",))
+    lleno=randint(1,100)
+    t1 = Thread(target=producer,args=("Maestro Zhang",lleno))
 
     t2 = Thread(target=customer,args=("Xiaoming",))
 
@@ -58,6 +54,5 @@ if __name__ == '__main__':
 
     t2.start()
 
-    t1.join()
-    t2.join()
+   
 
