@@ -45,7 +45,7 @@ def customer(name):
 
 
 if __name__ == '__main__':
-    lleno=randint(1,100)
+    lleno=randint(1,10)
     t1 = Thread(target=producer,args=("Maestro Zhang",lleno))
 
     t2 = Thread(target=customer,args=("Xiaoming",))
