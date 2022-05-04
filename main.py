@@ -1,11 +1,15 @@
 from queue import Queue
-
 from threading import Thread
-
 import time
+import random
 
 # Crear cola
 
+cacheList = []
+
+def isFull():
+    #Buffer está lleno
+    return len(cacheList) == 5
 q = Queue(10)
 
 def producer(name):
