@@ -5,9 +5,9 @@ from random import randint
 
 # Crear cola
 q = Queue(10)
-
-def producer(name,lleno):
-
+lleno = int(input("introduce el numero de bollos que desea "))
+def producer(name,lleno= int(input("introduce el numero de bollos que desea "))):
+    
     """Productor"""
 
     count = 1 #mostrador
@@ -45,7 +45,7 @@ def customer(name):
 
 
 if __name__ == '__main__':
-    lleno=randint(1,10)
+    #lleno=randint(1,10)
     t1 = Thread(target=producer,args=("Maestro Zhang",lleno))
 
     t2 = Thread(target=customer,args=("Xiaoming",))
